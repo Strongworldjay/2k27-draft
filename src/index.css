@@ -1,0 +1,268 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App theming - Subtle Elegance palette */
+:root{
+  --black:#020403;
+  --brown:#5f2e1b;
+  --deep-green:#1a2324;
+  --soft-black:#141413;
+  --paper:#1a2324;
+  --panel:#141413;
+  --panel-alt:#020403;
+  --accent:#5f2e1b;
+}
+
+html, body, #root{
+  height:100%;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  @apply font-ui;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(95,46,27,.28), transparent 34%),
+    radial-gradient(circle at 20% 80%, rgba(26,35,36,.65), transparent 35%),
+    linear-gradient(135deg, #020403 0%, #141413 48%, #1a2324 100%);
+  color:#f4efe7;
+  overflow:hidden;
+}
+
+.title-emboss{
+  letter-spacing:.08em;
+  color:#f4efe7;
+  text-shadow:0 2px 0 rgba(255,255,255,.08),0 8px 20px rgba(0,0,0,.85);
+}
+
+/* Tooltip */
+.tooltip{
+  @apply absolute px-3 py-2 rounded-lg border text-sm shadow-lg;
+  background:#141413;
+  color:#f4efe7;
+  border-color:rgba(244,239,231,.16);
+  white-space:nowrap;
+  transform:translate(-50%,-120%);
+}
+
+/* ===== Team Colors (provide --team-color) ===== */
+.cavaliers-bg{--team-color:#7c0c3b;background-color:#7c0c3b;color:whitesmoke;}
+.hawks-bg{--team-color:#ab112a;background-color:#ab112a;color:black;}
+.celtics-bg{--team-color:#0a7035;background-color:#0a7035;color:black;}
+.nets-bg{--team-color:#25282A;background-color:#25282A;color:#FFFFFF;}
+.hornets-bg{--team-color:#00788c;background-color:#00788c;color:white;}
+.bulls-bg{--team-color:#CE1141;background-color:#CE1141;color:black;}
+.mavericks-bg{--team-color:#1482cb;background-color:#1482cb;color:#B8C4CA;}
+.nuggets-bg{--team-color:#0E2240;background-color:#0E2240;color:whitesmoke;}
+.pistons-bg{--team-color:#8e0d23;background-color:#8e0d23;color:#BEC0C2;}
+.warriors-bg{--team-color:#FFC72C;background-color:#FFC72C;color:whitesmoke;}
+.rockets-bg{--team-color:#CE1141;background-color:#CE1141;color:#C4CED4;}
+.pacers-bg{--team-color:#FDBB30;background-color:#FDBB30;color:#002D62;}
+.clippers-bg{--team-color:#1D428A;background-color:#1D428A;color:#BEC0C2;}
+.lakers-bg{--team-color:#552583;background-color:#552583;color:whitesmoke;}
+.grizzlies-bg{--team-color:#12173F;background-color:#12173F;color:#5D76A9;}
+.heat-bg{--team-color:#98002E;background-color:#98002E;color:white;}
+.bucks-bg{--team-color:#00471B;background-color:#00471B;color:#EEE1C6;}
+.timberwolves-bg{--team-color:#0C2340;background-color:#0C2340;color:#9EA2A2;}
+.pelicans-bg{--team-color:#b48c42;background-color:#b48c42;color:#0C2340;}
+.knicks-bg{--team-color:#F58426;background-color:#F58426;color:#f0f3f5;}
+.thunder-bg{--team-color:#3722bb;background-color:#3722bb;color:whitesmoke;}
+.magic-bg{--team-color:#0077c0;background-color:#0077c0;color:#C4CED4;}
+.sixers-bg{--team-color:#002B5C;background-color:#002B5C;color:#C4CED4;}
+.suns-bg{--team-color:#E56020;background-color:#E56020;color:#1D1160;}
+.trailblazers-bg{--team-color:#E03A3E;background-color:#E03A3E;color:#0F0708;}
+.kings-bg{--team-color:#5A2D81;background-color:#5A2D81;color:#7f9099;}
+.spurs-bg{--team-color:#C4CED4;background-color:#C4CED4;color:black;}
+.raptors-bg{--team-color:#C5050C;background-color:#C5050C;color:black;}
+.jazz-bg{--team-color:#7A3A9A;background-color:#7A3A9A;color:#23d5e9;}
+.wizards-bg{--team-color:#E31837;background-color:#E31837;color:#002B5C;}
+.freeagent-bg{--team-color:gray;background-color:gray;color:black;border-color:gray;}
+
+/* ===== Rarity Ring (outer) + Team Core (inner) ===== */
+.rarity-ring{
+  padding:2.5px;
+  border-radius:9999px;
+  border:2.5px solid var(--rarity);
+  display:inline-flex;
+}
+
+/* Map tier key -> ring color */
+.ring-common{--rarity:#f4efe7;}
+.ring-uncommon{--rarity:#00c850;}
+.ring-rare{--rarity:#0078ff;}
+.ring-very-rare{--rarity:#9600ff;}
+.ring-legendary{--rarity:#c89232;}
+.ring-superstar{--rarity:#ff2828;}
+
+/* Softer ring glows */
+.rarity-ring.glow-common{box-shadow:0 0 8px 4px rgba(244,239,231,.36);}
+.rarity-ring.glow-uncommon{box-shadow:0 0 9px 4px rgba(0,200,80,.56);}
+.rarity-ring.glow-rare{box-shadow:0 0 10px 5px rgba(0,120,255,.56);}
+.rarity-ring.glow-very-rare{box-shadow:0 0 11px 5px rgba(150,0,255,.56);}
+.rarity-ring.glow-legendary{box-shadow:0 0 12px 6px rgba(200,146,50,.72);}
+.rarity-ring.glow-superstar{box-shadow:0 0 13px 6px rgba(255,40,40,.76);}
+
+/* Taken state */
+.rarity-ring.taken{
+  --rarity:#5d625e;
+  box-shadow:none !important;
+  opacity:.95;
+}
+
+.player-core{
+  padding:0;
+  border-radius:9999px;
+  background:var(--team-color);
+  display:inline-flex;
+  overflow:hidden;
+}
+
+/* Character dots are 1px bigger than last version */
+.player-dot{
+  @apply rounded-full w-[61px] h-[61px] md:w-[75px] md:h-[75px] flex items-center justify-center;
+  background:transparent;
+  border:0;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.48);
+  transition:transform .12s ease, box-shadow .2s ease, opacity .2s ease;
+  overflow:hidden;
+}
+.player-dot:hover{
+  transform:scale(1.04);
+  box-shadow:inset 0 5px 12px rgba(0,0,0,.55);
+}
+.player-dot.disabled{
+  filter:grayscale(.9) brightness(.72);
+  opacity:.62;
+  cursor:not-allowed;
+}
+.player-dot img{
+  display:block;
+  border-radius:9999px;
+  border:0;
+}
+
+/* Mobile polish */
+@media (max-width:767px){
+  .rarity-ring.glow-common{box-shadow:0 0 6px 3px rgba(244,239,231,.34);}
+  .rarity-ring.glow-uncommon{box-shadow:0 0 7px 3px rgba(0,200,80,.52);}
+  .rarity-ring.glow-rare{box-shadow:0 0 8px 4px rgba(0,120,255,.52);}
+  .rarity-ring.glow-very-rare{box-shadow:0 0 9px 4px rgba(150,0,255,.52);}
+  .rarity-ring.glow-legendary{box-shadow:0 0 10px 5px rgba(200,146,50,.68);}
+  .rarity-ring.glow-superstar{box-shadow:0 0 11px 5px rgba(255,40,40,.72);}
+}
+
+/* Legend rainbow ring */
+.rarity-ring.ring-legend {
+  position: relative;
+  border-color: transparent;
+}
+.rarity-ring.ring-legend::before {
+  content: "";
+  position: absolute;
+  inset: -2.5px;
+  padding: 2.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    #ff0040, #ffa500, #ffee00, #00d664, #00b2ff, #7a00ff, #ff00c8, #ff0040
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes legendHue {
+  to { filter: hue-rotate(360deg); }
+}
+.rarity-ring.glow-legend {
+  box-shadow: 0 0 16px 6px rgba(244,239,231,.25);
+  animation: legendHue 6s linear infinite;
+}
+
+/* Arrow styling */
+.arrow {
+  display: inline-block;
+  line-height: 1;
+  font-size: 1.1rem;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.55));
+}
+@media (min-width: 768px) {
+  .arrow { font-size: 1.45rem; }
+}
+
+/* New board fly-in animation */
+@keyframes dotFlyIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--fromX, 0), -40vh, 0) scale(.8);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 6px, 0) scale(1.02);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+.dot-enter {
+  opacity: 0;
+  animation: dotFlyIn 560ms cubic-bezier(.17,.84,.44,1) forwards;
+  animation-delay: calc(var(--i) * 55ms);
+  will-change: transform, opacity, filter;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot-enter { animation: none; opacity: 1; transform: none; }
+}
+
+/* Panel frame + active glow */
+.panel {
+  border: 1px solid rgba(244,239,231,.13);
+  background:#141413 !important;
+  color:#f4efe7 !important;
+}
+.panel-active {
+  box-shadow:
+    0 0 0 2px var(--franchise-color),
+    0 0 22px 6px color-mix(in srgb, var(--franchise-color) 60%, transparent);
+}
+
+/* Palette overrides for Tailwind classes used by the current JSX */
+.bg-\[\#f4ecdc\]{
+  background:
+    radial-gradient(circle at 50% 15%, rgba(95,46,27,.28), transparent 34%),
+    radial-gradient(circle at 20% 80%, rgba(26,35,36,.65), transparent 35%),
+    linear-gradient(135deg, #020403 0%, #141413 48%, #1a2324 100%) !important;
+}
+.bg-\[\#efe4cb\]{
+  background:#141413 !important;
+  color:#f4efe7 !important;
+}
+.bg-\[\#e1c67d\]{
+  background:#5f2e1b !important;
+  color:#f4efe7 !important;
+}
+.bg-\[\#f3e8d2\]{
+  background:#141413 !important;
+  color:#f4efe7 !important;
+}
+.text-black{
+  color:#f4efe7 !important;
+}
+.border-black\/10,
+.border-black\/12,
+.border-black\/20,
+.border-black\/25{
+  border-color:rgba(244,239,231,.14) !important;
+}
+.bg-black\/5{
+  background:rgba(244,239,231,.05) !important;
+}
